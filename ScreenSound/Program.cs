@@ -1,4 +1,7 @@
-﻿string mensagemDeBoasVindas = "Bem vindo ao ScreenSound!";
+﻿using Atividades;
+Atividades.Atividades.Exe008();
+
+/*string mensagemDeBoasVindas = "Bem vindo ao ScreenSound!";
 
 void ExibirMensagemDeBoasVindas()
 {
@@ -46,4 +49,6 @@ void ExibirOpcoesDoMenu()
 
 ExibirMensagemDeBoasVindas();
 ExibirOpcoesDoMenu();
+*/
+
 
