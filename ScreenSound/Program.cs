@@ -1,6 +1,6 @@
 ﻿using Atividades;
 string mensagemDeBoasVindas = "Bem vindo ao ScreenSound!";
-List<string> listaDasBandas = new List<string> {"Skillet","Fireflight","Calipso"};
+List<string> listaDasBandas = new List<string> {"Skillet","Fireflight","Calypso"};
 void ExibirLogo()
 {
 	Console.WriteLine(@"
@@ -64,19 +64,23 @@ void RegistrarBanda()
 void MostrarBandasRegistradas()
 {
 	Console.Clear();
-	Console.WriteLine("*************************************");
+	Console.WriteLine("************************************");
 	Console.WriteLine("Exibindo todas as bandas registradas");
-	Console.WriteLine("*************************************\n");
-	for (int i = 0; i < listaDasBandas.Count; i++)
+	Console.WriteLine("************************************\n");
+/*	for (int i = 0; i < listaDasBandas.Count; i++)
 	{
 		Console.WriteLine($"Banda: {listaDasBandas[i]}");
+	}*/
+	foreach(string banda in listaDasBandas)
+	{
+		Console.WriteLine($"Banda: {banda}");
 	}
 	Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
 	Console.ReadKey();
 	Console.Clear();
 	ExibirOpcoesDoMenu();
 }
-//Atividades.Atividades.Exe009();
-ExibirOpcoesDoMenu();
+Atividades.Atividades.A03Exe008();
+//jExibirOpcoesDoMenu();
 
 
