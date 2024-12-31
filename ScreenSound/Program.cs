@@ -113,7 +113,7 @@ void AvaliarUmaBanda()
 		ExibirOpcoesDoMenu();
 	}
 }
-Atividades.Atividades.GerenciaEstoque();
+Atividades.Atividades.MediaVendaCarros();
 //ExibirOpcoesDoMenu();
 
 

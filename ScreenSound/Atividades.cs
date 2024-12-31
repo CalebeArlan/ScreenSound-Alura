@@ -16,7 +16,7 @@ public class Atividades
 
 		Console.WriteLine("****** LISTA DE LANGS *******");
 
-		foreach(string lang in linguagensDeProgramacao)
+		foreach (string lang in linguagensDeProgramacao)
 		{
 			Console.WriteLine($"{linguagensDeProgramacao.IndexOf(lang)} - {lang}");
 		}
@@ -25,7 +25,7 @@ public class Atividades
 
 		Console.WriteLine($"Digite uma nota para a linguagem de programação {linguagensDeProgramacao[escolha]}: ");
 		notaMedia = Convert.ToInt32(Console.ReadLine());
-		if(notaMedia >= 5)
+		if (notaMedia >= 5)
 		{
 			Console.WriteLine("Nota suficiente para aprovação.");
 		}
@@ -39,18 +39,18 @@ public class Atividades
 		int numero = Convert.ToInt32(Console.ReadLine());
 		while (true)
 		{
-			if(numero < numeroAleatorio)
+			if (numero < numeroAleatorio)
 			{
 				Console.WriteLine("O número que estou pensando é maior que esse..\nFaça uma nova tentativa: ");
 				numero = Convert.ToInt32(Console.ReadLine());
 			}
-			else if(numero > numeroAleatorio)
+			else if (numero > numeroAleatorio)
 			{
 				Console.WriteLine("O número que estou pensando é menor que esse..\nFaça uma nova tentativa: ");
 				numero = Convert.ToInt32(Console.ReadLine());
 
 			}
-			else if(numero == numeroAleatorio)
+			else if (numero == numeroAleatorio)
 			{
 				Console.WriteLine("Isso! Você acertou! Era esse número mesmo!");
 				break;
@@ -78,7 +78,7 @@ public class Atividades
 	{
 		List<string> minhasBandas = new List<string> { "Skillet", "Fireflight", "O Maior Clichê do Mundo", "Alva" };
 
-		for(int i = 0; i < minhasBandas.Count; i++)
+		for (int i = 0; i < minhasBandas.Count; i++)
 		{
 			Console.WriteLine($"Banda - {minhasBandas[i]}");
 		}
@@ -87,15 +87,15 @@ public class Atividades
 	{
 		List<int> listaNumerosInteiros = new List<int>();
 		Console.WriteLine("Digite 10 números inteiros para fazermos um somatório.");
-		int somatorio = 0,numeroDigitado = 0;
-		for(int i = 1; i != 10 + 1;  i++)
+		int somatorio = 0, numeroDigitado = 0;
+		for (int i = 1; i != 10 + 1; i++)
 		{
 			Console.Write($"Digite o {i}° número: ");
 			numeroDigitado = Int32.Parse(Console.ReadLine());
 			listaNumerosInteiros.Add(numeroDigitado);
 
 		}
-		foreach(int numero in listaNumerosInteiros)
+		foreach (int numero in listaNumerosInteiros)
 		{
 			somatorio += numero;
 		}
@@ -114,9 +114,9 @@ public class Atividades
 
 		}
 		Console.WriteLine("********* Mostrando com Foreach *********");
-		foreach(int numero in listaNumerosInteiros)
+		foreach (int numero in listaNumerosInteiros)
 		{
-			if(numero % 2 == 0)
+			if (numero % 2 == 0)
 			{
 				Console.WriteLine(numero);
 			}
@@ -139,21 +139,21 @@ public class Atividades
 		Dictionary<string, List<double>> AlunosNotas = new Dictionary<string, List<double>>();
 
 		AlunosNotas.Add("Lucas", new List<double> { 1, 2, 3, 4, 5, 6, });
-		AlunosNotas.Add("Ana Rita", new List<double> {9,3,5,9,8,10 });
+		AlunosNotas.Add("Ana Rita", new List<double> { 9, 3, 5, 9, 8, 10 });
 		AlunosNotas.Add("Thayane", new List<double> { 10, 4, 5, 9, 3, 10 });
 
-		for(int i = 0; i < AlunosNotas.Keys.Count; i++)
+		for (int i = 0; i < AlunosNotas.Keys.Count; i++)
 		{
 			double media;
 			Console.WriteLine("Notas do(a) " + AlunosNotas.Keys.ElementAt(i));
 
-			foreach(List<double> listaNotas in AlunosNotas.Values)
+			foreach (List<double> listaNotas in AlunosNotas.Values)
 			{
 				media = listaNotas.Average();
 				Console.WriteLine($"A média deste(a) aluno foi: {media}");
 			}
 		}
-    }
+	}
 	static Dictionary<string, int> EstoqueProdutos = new Dictionary<string, int>();
 	static Dictionary<string, string> UsuariosSenhas = new Dictionary<string, string>();
 	public static void GerenciaEstoque()
@@ -163,6 +163,7 @@ public class Atividades
 			UsuariosSenhas.Add("User", "123");
 			UsuariosSenhas.Add("Admin", "Admin");
 			UsuariosSenhas.Add("Calebe", "SenhaMuitoForte");
+
 
 			string usuario, senha;
 			Console.WriteLine("******");
@@ -214,7 +215,7 @@ _(_/__(/__/_)__/__(_/_/ (_   _(_/(__(/_   _(/__/_)__/__(_/_(_/__(_/__(/_
 					break;
 				case "3": ExibirQuantidade();
 					break;
-				case "4": Console.WriteLine("Até mais!");
+				case "0": Console.WriteLine("Até mais!");
 					break;
 				default: Console.WriteLine("Digite uma opção válida!");
 					break;
@@ -270,7 +271,7 @@ _(_/__(/__/_)__/__(_/_/ (_   _(_/(__(/_   _(/__/_)__/__(_/_(_/__(_/__(/_
 			string nome;
 			Console.Write("Digite o nome do produto que deseja buscar: ");
 			nome = Console.ReadLine()!;
-			if(IsItemCadastrado(nome))
+			if (IsItemCadastrado(nome))
 			{
 				foreach (string item in EstoqueProdutos.Keys)
 				{
@@ -302,4 +303,48 @@ _(_/__(/__/_)__/__(_/_/ (_   _(_/(__(/_   _(/__/_)__/__(_/_(_/__(_/__(/_
 		Login();
 	}
 
+	static Dictionary<string, List<int>> vendasCarros = new Dictionary<string, List<int>>
+	{
+		{ "Bugatti Veyron", new List<int> { 10, 15, 12, 8, 5 } },
+		{ "Koenigsegg Agera RS", new List<int> { 2, 3, 5, 6, 7 } },
+		{ "Lamborghini Aventador", new List<int> { 20, 18, 22, 24, 16 } },
+		{ "Pagani Huayra", new List<int> { 4, 5, 6, 5, 4 } },
+		{ "Ferrari LaFerrari", new List<int> { 7, 6, 5, 8, 10 } } };
+
+	public static void MediaVendaCarros()
+	{
+		static double CalculaMedia(string modelo)
+		{
+			double soma = 0, media;
+			foreach(int quantidade in vendasCarros[modelo])
+			{
+				soma = quantidade + soma;
+			}
+			media = soma / vendasCarros[modelo].Count;
+			return media;
+		}
+		
+		static void ExibirModelos()
+		{
+			foreach (string modelo in vendasCarros.Keys)
+			{
+				Console.WriteLine($"********* {modelo.ToUpper()} *********");
+				foreach(int quantidade in vendasCarros[modelo])
+				{
+					Console.WriteLine(quantidade);
+				}
+			}
+		}
+
+		static void SelecionarMedia()
+		{
+			string modelo;
+			Console.Write("Digite qual modelo você quer calcular a média de vendas por ano: ");
+			modelo = Console.ReadLine();
+			Console.WriteLine($"A média de vendas por ano do modelo {modelo} foi de: " + CalculaMedia(modelo));
+		}
+
+		ExibirModelos();
+		SelecionarMedia();
+	}
 }
