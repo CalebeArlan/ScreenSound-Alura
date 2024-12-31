@@ -155,8 +155,42 @@ public class Atividades
 		}
     }
 	static Dictionary<string, int> EstoqueProdutos = new Dictionary<string, int>();
+	static Dictionary<string, string> UsuariosSenhas = new Dictionary<string, string>();
 	public static void GerenciaEstoque()
 	{
+		static void Login()
+		{
+			UsuariosSenhas.Add("User", "123");
+			UsuariosSenhas.Add("Admin", "Admin");
+			UsuariosSenhas.Add("Calebe", "SenhaMuitoForte");
+
+			string usuario, senha;
+			Console.WriteLine("******");
+			Console.WriteLine("Login");
+			Console.WriteLine("******\n\n");
+			Console.Write("Digite seu nome de usuário: ");
+			usuario = Console.ReadLine()!;
+			Console.WriteLine("Digite sua senha: ");
+			senha = Console.ReadLine()!;
+			if (ValidaLogin(usuario, senha))
+			{
+				Menu();
+			}
+			else
+			{
+				Console.WriteLine("Usuário e/ou senha inválidos!");
+				Login();
+			}
+		}
+		static bool ValidaLogin(string usuario, string senha)
+		{
+			if (UsuariosSenhas[usuario].Contains(senha))
+			{
+				return true;
+			}
+			return false;
+		}
+
 		static void Menu()
 		{
 			Console.Clear();
@@ -265,7 +299,7 @@ _(_/__(/__/_)__/__(_/_/ (_   _(_/(__(/_   _(/__/_)__/__(_/_(_/__(_/__(/_
 			}
 			return false;
 		}
-		Menu();
+		Login();
 	}
 
 }
