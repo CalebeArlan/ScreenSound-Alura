@@ -1,5 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using System.ComponentModel.Design;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
+using System.Xml;
 
 namespace Atividades;
 public class Atividades
@@ -130,5 +132,140 @@ public class Atividades
 
 	}
 
+	public static void MediaAlunoDicionarios()
+	{
+		//Aula 04 Exercício 08 Atividade 01
+		//Criar um dicionário que represente um aluno, com uma lista de notas, e mostre a média de suas notas na tela.
+		Dictionary<string, List<double>> AlunosNotas = new Dictionary<string, List<double>>();
+
+		AlunosNotas.Add("Lucas", new List<double> { 1, 2, 3, 4, 5, 6, });
+		AlunosNotas.Add("Ana Rita", new List<double> {9,3,5,9,8,10 });
+		AlunosNotas.Add("Thayane", new List<double> { 10, 4, 5, 9, 3, 10 });
+
+		for(int i = 0; i < AlunosNotas.Keys.Count; i++)
+		{
+			double media;
+			Console.WriteLine("Notas do(a) " + AlunosNotas.Keys.ElementAt(i));
+
+			foreach(List<double> listaNotas in AlunosNotas.Values)
+			{
+				media = listaNotas.Average();
+				Console.WriteLine($"A média deste(a) aluno foi: {media}");
+			}
+		}
+    }
+	static Dictionary<string, int> EstoqueProdutos = new Dictionary<string, int>();
+	public static void GerenciaEstoque()
+	{
+		static void Menu()
+		{
+			Console.Clear();
+			Console.WriteLine(@"
+=========================================================================  
+
+  __   _   ,   -/- _,_ ,_      __/   _      _   ,   -/- _,_ __        _ 
+_(_/__(/__/_)__/__(_/_/ (_   _(_/(__(/_   _(/__/_)__/__(_/_(_/__(_/__(/_
+ _/_                                                       _/           
+(/                                                         /)           
+                                                           `            
+=========================================================================
+");
+			Console.Write("1 - Cadastrar Novo Produto\n2 - Alterar Quantidade de Produto Existente\n3 - Consultar Quantidade por Nome\n0 - Sair\nSua escolha: ");
+			string opcao = Console.ReadLine();
+			switch (opcao)
+			{
+				case "1": CadastrarProduto();
+					break;
+				case "2": AlterarQuantidade();
+					break;
+				case "3": ExibirQuantidade();
+					break;
+				case "4": Console.WriteLine("Até mais!");
+					break;
+				default: Console.WriteLine("Digite uma opção válida!");
+					break;
+			}
+		}
+
+		static void CadastrarProduto()
+		{
+			string nome;
+			int quantidade;
+			Console.Write("Digite o nome do novo produto: ");
+			nome = Console.ReadLine()!;
+			Console.Write("Digite a quantidade de itens no estoque para este produto: ");
+			quantidade = int.Parse(Console.ReadLine()!);
+
+			if (IsItemCadastrado(nome))
+			{
+				Console.WriteLine("Esse produto já está cadastrado!");
+			}
+			else
+			{
+				EstoqueProdutos.Add(nome, quantidade);
+				Console.WriteLine($"O produto {nome} com a quantidade {quantidade} foi cadatrado com sucesso!");
+			}
+			Console.WriteLine("Digite qualquer tecla para continuar");
+			Console.ReadKey();
+			Menu();
+		}
+		static void AlterarQuantidade()
+		{
+			string nome;
+			int quantidade;
+			Console.Write("Digite o nome do produto a ser alterado a quantidade: ");
+			nome = Console.ReadLine()!;
+			Console.Write("Digite a nova quantidade vigente do produto: ");
+			quantidade = int.Parse(Console.ReadLine()!);
+
+			if (IsItemCadastrado(nome))
+			{
+				EstoqueProdutos[nome] = quantidade;
+				Console.WriteLine($"Quantidade para o item {nome} foi alterada com sucesso!");
+			}
+			else
+			{
+				Console.WriteLine("Nome incorreto ou este produto não está cadastrado.");
+			}
+			Console.WriteLine("Digite qualquer tecla para continuar");
+			Console.ReadKey();
+			Menu();
+		}
+		static void ExibirQuantidade()
+		{
+			string nome;
+			Console.Write("Digite o nome do produto que deseja buscar: ");
+			nome = Console.ReadLine()!;
+			if(IsItemCadastrado(nome))
+			{
+				foreach (string item in EstoqueProdutos.Keys)
+				{
+					if (item == nome)
+					{
+						Console.WriteLine($"O produto {nome} tem {EstoqueProdutos[nome]} em estoque.");
+					}
+				}
+			}
+			else
+			{
+				Console.WriteLine("Produto não encontrado. Verifique se digitou corretamente.");
+			}
+			Console.WriteLine("Digite qualquer tecla para continuar");
+			Console.ReadKey();
+			Menu();
+		}
+		static bool IsItemCadastrado(string nomeProduto)
+		{
+			foreach (string item in EstoqueProdutos.Keys)
+			{
+				if (item == nomeProduto)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		Menu();
+	}
 
 }

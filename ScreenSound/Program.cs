@@ -113,7 +113,7 @@ void AvaliarUmaBanda()
 		ExibirOpcoesDoMenu();
 	}
 }
-//Atividades.Atividades.A03Exe008();
-ExibirOpcoesDoMenu();
+Atividades.Atividades.GerenciaEstoque();
+//ExibirOpcoesDoMenu();
 
 
