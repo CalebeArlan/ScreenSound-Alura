@@ -114,23 +114,35 @@ void AvaliarUmaBanda()
 }
 void ExibirMediaDeUmaBanda()
 {
-	string nome;
-	float media, soma = 0;
+	string nomeDaBanda;
+	double media, soma = 0;
 	Console.Clear();
 	ExibirTituloDaOpcao("Exibir Média de uma Banda");
 	Console.Write("Digite o nome da banda que deseja exibir a média de avaliações: ");
-	nome = Console.ReadLine()!;
-
-	foreach (int nota in bandasRegistradas[nome])
+	nomeDaBanda = Console.ReadLine()!;
+	if (bandasRegistradas.ContainsKey(nomeDaBanda))
 	{
-		soma += nota;
+		foreach (int nota in bandasRegistradas[nomeDaBanda])
+		{
+			soma += nota;
+		}
+		media = soma / bandasRegistradas[nomeDaBanda].Count;
+		//media = bandasRegistradas[nomeDaBanda].Average(); <-- Outra forma de se fazer
+		Console.WriteLine($"A média das avaliações para a banda {nomeDaBanda} é de {media}.");
+		Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+		Console.ReadKey();
+		Console.Clear();
+		ExibirOpcoesDoMenu();
 	}
-	media = soma / bandasRegistradas[nome].Count;
-	Console.WriteLine($"A média das avaliações para a banda {nome} é de {media}.");
-	Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-	Console.ReadKey();
-	Console.Clear();
-	ExibirOpcoesDoMenu();
+	else
+	{
+		Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+		Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+		Console.ReadKey();
+		Console.Clear();
+		ExibirOpcoesDoMenu();
+	}
+	
 }
 
 //Atividades.Atividades.MediaVendaCarros();
