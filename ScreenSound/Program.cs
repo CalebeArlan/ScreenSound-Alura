@@ -1,6 +1,5 @@
 ﻿using Atividades;
 string mensagemDeBoasVindas = "Bem vindo ao ScreenSound!";
-//List<string> listaDasBandas = new List<string> {"Skillet","Fireflight","Calypso"};
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
 bandasRegistradas.Add("Linkin Park", new List<int> { 9, 10, 5 });
 bandasRegistradas.Add("The Beatles", new List<int>());
@@ -40,7 +39,7 @@ void ExibirOpcoesDoMenu()
 			break;
 		case 3: AvaliarUmaBanda();
 			break;
-		case 4: Console.WriteLine("Você digitu a opção " + opcaoEscolhida);
+		case 4: ExibirMediaDeUmaBanda();
 			break;
 		case -1: Console.WriteLine("Tchau, tchau! :)");
 			break;
@@ -113,7 +112,28 @@ void AvaliarUmaBanda()
 		ExibirOpcoesDoMenu();
 	}
 }
-Atividades.Atividades.MediaVendaCarros();
-//ExibirOpcoesDoMenu();
+void ExibirMediaDeUmaBanda()
+{
+	string nome;
+	float media, soma = 0;
+	Console.Clear();
+	ExibirTituloDaOpcao("Exibir Média de uma Banda");
+	Console.Write("Digite o nome da banda que deseja exibir a média de avaliações: ");
+	nome = Console.ReadLine()!;
+
+	foreach (int nota in bandasRegistradas[nome])
+	{
+		soma += nota;
+	}
+	media = soma / bandasRegistradas[nome].Count;
+	Console.WriteLine($"A média das avaliações para a banda {nome} é de {media}.");
+	Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+	Console.ReadKey();
+	Console.Clear();
+	ExibirOpcoesDoMenu();
+}
+
+//Atividades.Atividades.MediaVendaCarros();
+ExibirOpcoesDoMenu();
 
 
